@@ -7,11 +7,11 @@ export const environment = {
   baseURL: 'https://localhost:44394/api/Observation/v1/',
 };
 
-export const apiLinks={
-  GetAllObservations:environment.baseURL+"GetAllObservations",
-  AddObservation:environment.baseURL+"AddObservation",
-  UpdateObservation:environment.baseURL+"UpdateObservation",
-}
+// export const links={
+//   GetAllObservations:environment.baseURL+"GetAllObservations",
+//   AddObservation:environment.baseURL+"AddObservation",
+//   UpdateObservation:environment.baseURL+"UpdateObservation",
+// }
 
 /*
  * For easier debugging in development mode, you can import the following file

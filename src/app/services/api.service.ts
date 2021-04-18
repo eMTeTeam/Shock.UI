@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
-import { apiLinks, environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -18,15 +18,16 @@ export class ApiService {
     localStorage.removeItem("isSuperUser");
   }
   GetAllObservations = (user: string): Observable<any> => {
-    const url = apiLinks.GetAllObservations + '?user=' + user;
+    const base = environment.baseURL + 'GetAllObservations';
+    const url = base + '?user=' + user;
     return this.http.get(url);
   }
   AddObservation = (params: any): Observable<any> => {
-    const url = apiLinks.AddObservation;
+    const url = environment.baseURL + 'AddObservation';
     return this.http.post(url, params);
   }
   updateObservation = (params: any): Observable<any> => {
-    const url = apiLinks.UpdateObservation;
+    const url = environment.baseURL + 'UpdateObservation';
     return this.http.post(url, params);
   }
   insertEntity = (params: any): Observable<any> => {
