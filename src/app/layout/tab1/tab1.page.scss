@@ -1,0 +1,68 @@
+.main-grid {
+  border: #eee solid;
+  margin-top: 10px;
+}
+
+.main-row {
+  padding: 25px 0;
+}
+
+.segmentFilter{
+  height:45px;
+  margin-top:4px;
+}
+.observerHeader{
+  height: 36px;
+  text-align: center;
+  background: #2d5697;
+  color: #FFF;
+  padding: 9px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+ion-segment .segment-button-checked{
+  color: #2d5697;
+}
+.addDiv{
+  text-align: right;
+    padding: 3px 10px 1px 0px;
+}
+.addIcon{
+  font-size: 35px;
+    color: #2d5697;
+}
+.noObservation{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+
+}
+.main-row {
+  padding: 1px 0;
+}
+
+.main-item {
+  padding: 0px;
+  height: 52px;
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+}
+.fieldlabel{
+  font-weight: bold;
+}
+.assigneeName{
+  width: 120px;
+    text-align: center;
+    background: #d0d042;
+  background:#d0d042;color:#fff;padding:5px
+}
+.openClass{
+  --background:#f0f0b7;
+}
+.inprogressClass{
+  --background:#7ec9eb;
+}
+.closeClass{
+  --background:#c9f4c9;
+}

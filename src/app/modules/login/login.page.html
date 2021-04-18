@@ -1,0 +1,25 @@
+<ion-content [fullscreen]="true" padding>
+
+  <div class="login-card">
+
+    <img slot="start" class="logo-large" src="../../../assets/icon/favicon.png" />
+
+    <form (ngSubmit)="doLogin()" [formGroup]="loginForm" padding>
+      <ion-input required type="text" placeholder="username" name="username" formControlName="userName">
+        <ion-icon name="person"></ion-icon>
+      </ion-input>
+       <br/>
+      <ion-input required type="password" placeholder="password" name="password" formControlName="password">
+        <ion-icon name="lock-closed"></ion-icon>
+      </ion-input>
+     
+    
+      <div class="ion-padding-top">
+        <ion-button expand="block" type="submit" class="ion-no-margin btn-fill">Login</ion-button>
+      </div>
+
+    </form>
+  </div>
+
+
+</ion-content>

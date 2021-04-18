@@ -1,0 +1,12 @@
+ion-tab-button[aria-selected="true"] {
+  background-color: #2d5697;
+  color: white;
+}
+.ellipsis{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.userDiv{
+  max-width: 140px;
+}

@@ -1,0 +1,112 @@
+<ion-content>
+    <form (ngSubmit)="addObservation()" [formGroup]="observerForm" padding>
+    <ion-row class="main-row">
+      <ion-col>
+        <ion-item class="main-item">
+          <ion-label position="floating">Observation Name<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input formControlName="observationName" placeholder="Add observation name" [(ngModel)]="userService.observationData.name"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item class="main-item">
+          <ion-label position="floating">Project Name<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-select mode="ios" formControlName="projectName" placeholder="Select project" [(ngModel)]="userService.observationData.projectName">
+            <ion-select-option [value]="f" *ngFor="let f of projectList">{{f}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item class="main-item">
+          <ion-label position="floating">project Location<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input formControlName="projectLocation" placeholder="Add project Location" [(ngModel)]="userService.observationData.projectLocation"></ion-input>
+        </ion-item>
+      </ion-col>
+        <ion-col>
+          <ion-item class="main-item">
+            <ion-label position="floating">Category<ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-select mode="ios" formControlName="category" placeholder="Select category" [(ngModel)]="userService.observationData.category">
+              <ion-select-option [value]="f" *ngFor="let f of categoryList">{{f}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item class="main-item">
+            <ion-label position="floating">Type of activity<ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-select  mode="ios" formControlName="activity"  placeholder="Select activity" [(ngModel)]="userService.observationData.typeOfActivity">
+              <ion-select-option [value]="s" *ngFor="let s of activityTypeList">{{s}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+
+        <ion-col  size="12">
+          <ion-item class="main-item">
+            <ion-label position="floating">Observation description<ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-textarea formControlName="description"  placeholder="Add observation description" [(ngModel)]="userService.observationData.description"></ion-textarea>
+          </ion-item>
+        </ion-col>
+        
+        <ion-col  size="12">
+            <ion-item class="main-item">
+              <ion-label position="floating">Agreed action<ion-text color="danger">*</ion-text>
+              </ion-label>
+              <ion-textarea formControlName="agreedAction" placeholder="Add Agreed action" [(ngModel)]="userService.observationData.agreedAction"></ion-textarea>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item class="main-item">
+              <ion-label position="floating">Action owner<ion-text color="danger">*</ion-text>
+              </ion-label>
+              <ion-input formControlName="actionOwner" placeholder="Add Action owner" [(ngModel)]="userService.observationData.actionOwner"></ion-input>
+            </ion-item>
+          </ion-col>
+
+          <ion-col>
+            <ion-item class="main-item">
+              <ion-label position="floating">Due date<ion-text color="danger">*</ion-text>
+              </ion-label>
+              <ion-datetime mode="ios" formControlName="dueDate" displayFormat="MMM DD YYYY" placeholder="Select due date" [(ngModel)]="userService.observationData.dueDate"></ion-datetime>
+            </ion-item>
+          </ion-col>
+
+        <ion-col>
+          <ion-item class="main-item">
+            <ion-label position="floating">Status<ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-select  mode="ios" formControlName="status" placeholder="Select status" [(ngModel)]="userService.observationData.status">
+              <ion-select-option value="{{fr}}" *ngFor="let fr of observerStatusList">{{fr}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+            <ion-item class="main-item">
+              <ion-label position="stacked">Evidence
+              </ion-label>
+              <ion-input id="multipleLocalFilesSelector" type='file' name='files[]' nv-file-select uploader="uploader" multiple="multiple"></ion-input>
+            </ion-item>
+          </ion-col>
+
+    </ion-row>
+
+    <div class="ion-padding-top">
+        <ion-toolbar>
+            <ion-buttons slot="end">
+              <ion-button style="background:#fff; color: #333;width:80px; border:1px solid #2d5697" routerLink="/tabs/tab1" >
+                Cancel
+              </ion-button>
+              <ion-button  type="submit" style="background:#2d5697;--color:#fff; color: #fff!important;width:80px">
+                Save
+              </ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        <!-- <ion-button expand="block" type="submit" class="ion-no-margin btn-fill">Save</ion-button> -->
+    </div>
+
+    </form>
+</ion-content>

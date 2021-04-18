@@ -1,0 +1,109 @@
+<div>
+  <ion-row>
+    <ion-col>
+      <ion-segment (ionChange)="segmentChanged($event)" color="secondary" [value]="observationStatus" mode="ios" class="segmentFilter">
+        <ion-segment-button value="All">
+          <ion-label>All</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Open">
+          <ion-label>Open</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Inprogress">
+          <ion-label>In progress</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Closed">
+          <ion-label>Closed</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-col>
+    <ion-col>
+      <ion-item class="main-item" mode="md">
+        <ion-label position="floating">Project
+        </ion-label>
+        <ion-select mode="ios" placeholder="Filter project"  [(ngModel)]="filterObject.project">
+          <ion-select-option [value]="f" *ngFor="let f of projectList">{{f}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item class="main-item" mode="md">
+        <ion-label position="floating">From
+        </ion-label>
+        <ion-datetime displayFormat="MMM DD YYYY" placeholder="From date"  [(ngModel)]="filterObject.fromDate"></ion-datetime>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item class="main-item" mode="md">
+        <ion-label position="floating">To
+        </ion-label>
+        <ion-datetime displayFormat="MMM DD YYYY" placeholder="To date" [(ngModel)]="filterObject.toDate" ></ion-datetime>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item class="main-item" mode="md">
+        <ion-label position="floating">Category
+        </ion-label>
+        <ion-select mode="ios" placeholder="Filter category"  [(ngModel)]="filterObject.category">
+          <ion-select-option [value]="f" *ngFor="let f of categoryList">{{f}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item class="main-item" mode="md">
+        <ion-label position="floating">Type of activity
+        </ion-label>
+        <ion-select  mode="ios"  placeholder="Filter activity"  [(ngModel)]="filterObject.activity">
+          <ion-select-option [value]="s" *ngFor="let s of activityTypeList">{{s}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-button (click)="resetChartData()"  style="background:#2d5697;--color:#fff; color: #fff!important;width:80px;border-radius: 10px;">
+        Filter
+      </ion-button>
+      <ion-button (click)="clearFilter()"  style="border:none;--color:#333;--background:#fff; color: #333!important;width:80px;border-radius: 10px;margin-left:15px;">
+        Clear 
+      </ion-button>
+    </ion-col>
+    
+  </ion-row>
+</div>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="loadData($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div class="headerLabel">Activity Analysis</div>
+<ion-row class="main-row">
+  <ion-col size="12" class="chart-bar">
+    <canvas id="barChartData"  baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+      [legend]="barChartLegend" [chartType]="barChartType">
+    </canvas>
+  </ion-col>
+</ion-row>
+<div class="headerLabel">Category Analysis</div>
+    <ion-row class="main-row">
+     
+      <ion-col size="12" *ngIf="pieChartLabels && pieChartData"> 
+        <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" 
+        [chartType]="pieChartType"></canvas>
+      </ion-col>
+    
+      <!-- <ion-col size="12">
+        <canvas baseChart [datasets]="stackedarChartData" [labels]="stackedBarChartLabels"
+          [options]="stackedBarChartOptions" [legend]="stackedBarChartLegend" [chartType]="stackedBarChartType">
+        </canvas>
+      </ion-col> -->
+    </ion-row>
+<div class="headerLabel">
+  Status Analysis
+</div>
+<ion-row class="main-row">
+  <ion-col size="12">
+    <canvas baseChart [datasets]="statusbarChartData" [labels]="statusbarChartLabels" [options]="barChartOptions"
+      [legend]="barChartLegend" [chartType]="barChartType">
+    </canvas>
+  </ion-col>
+</ion-row>
+</ion-content>
