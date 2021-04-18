@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseURL: 'https://emte-topglove.herokuapp.com/api/Quality/v1/'
+  baseURL: 'https://shock-api.herokuapp.com/api/Quality/v1/'
 };
