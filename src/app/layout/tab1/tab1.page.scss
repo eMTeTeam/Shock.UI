@@ -14,14 +14,14 @@
 .observerHeader{
   height: 36px;
   text-align: center;
-  background: #2d5697;
+  background: green;
   color: #FFF;
   padding: 9px;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
 ion-segment .segment-button-checked{
-  color: #2d5697;
+  color: green;
 }
 .addDiv{
   text-align: right;
@@ -29,7 +29,7 @@ ion-segment .segment-button-checked{
 }
 .addIcon{
   font-size: 35px;
-    color: #2d5697;
+    color: green;
 }
 .noObservation{
   position: relative;
@@ -50,6 +50,10 @@ ion-segment .segment-button-checked{
 }
 .fieldlabel{
   font-weight: bold;
+ 
+}
+.fieldvalue{
+  background: #f4f5f8;
 }
 .assigneeName{
   width: 120px;
@@ -58,10 +62,10 @@ ion-segment .segment-button-checked{
   background:#d0d042;color:#fff;padding:5px
 }
 .openClass{
-  --background:#f0f0b7;
+  --background:#f69898;
 }
 .inprogressClass{
-  --background:#7ec9eb;
+  --background:#f0f0b7;
 }
 .closeClass{
   --background:#c9f4c9;

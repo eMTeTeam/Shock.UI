@@ -49,7 +49,7 @@ export class LoginPage implements OnInit {
         }
         this.toast.success("Login success");
         this.loadingService.hide();
-        this.router.navigate(['/tabs'], { replaceUrl: true });
+        this.router.navigate(['/tabs']);
      
       
       } else {

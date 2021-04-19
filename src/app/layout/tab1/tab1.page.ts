@@ -36,6 +36,12 @@ export class Tab1Page implements OnInit {
     project:"All",
     category:"All",
     activity:"All"
+  };
+  countObject={
+    All:0,
+    Open:0,
+    Inprogress:0,
+    Closed:0
   }
   minDate:string=new Date().toUTCString();
   maxDate:string=new Date().toUTCString();
@@ -82,6 +88,10 @@ export class Tab1Page implements OnInit {
       (data: any) => {
         this.loadingService.hide();
         this.userService.observationList=data;
+        this.countObject.All=data.length;
+        this.countObject.Open=data.filter(a=>a.status=="Open").length;
+        this.countObject.Inprogress=data.filter(a=>a.status=="Inprogress").length;
+        this.countObject.Closed=data.filter(a=>a.status=="Closed").length;
         this.setObservationList();
         if(event){
           event.target.complete();
@@ -111,8 +121,9 @@ export class Tab1Page implements OnInit {
      this.getBasedOnStatus();
    }
   }
-  observationStatus:string="All";
+  observationStatus:string="Inprogress";
   filteredObservationStatus:any=[];
+
   getBasedOnStatus(){
     this.filteredObservationStatus = this.userService.observationList.filter((data)=>{
        return ((new Date(data.dueDate) >=new Date(this.filterObject.fromDate)) 

@@ -36,7 +36,7 @@ export class Tab2Page {
     private apiService: ApiService,
     private toast: NotificationService,
     private loadingService: LoadingService,
-    private userService: UserService,
+    public userService: UserService,
     private fb: FormBuilder,
     private route: ActivatedRoute,) {
       this.observerData=this.userService.observationData;

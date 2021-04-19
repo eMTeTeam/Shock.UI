@@ -1,22 +1,28 @@
 <!-- <div class="observerHeader">Observations</div> -->
 <div>
   <ion-row>
-    <ion-col>
+    <ion-col size="10">
       <ion-segment (ionChange)="segmentChanged($event)" color="secondary" [value]="observationStatus" mode="ios" class="segmentFilter">
         <ion-segment-button value="All">
-          <ion-label>All</ion-label>
+          <ion-label>All ({{countObject.All}})</ion-label>
         </ion-segment-button>
         <ion-segment-button value="Open">
-          <ion-label>Open</ion-label>
+          <ion-label>Open ({{countObject.Open}})</ion-label>
         </ion-segment-button>
         <ion-segment-button value="Inprogress">
-          <ion-label>In progress</ion-label>
+          <ion-label>In progress ({{countObject.Inprogress}})</ion-label>
         </ion-segment-button>
         <ion-segment-button value="Closed">
-          <ion-label>Closed</ion-label>
+          <ion-label>Closed ({{countObject.Closed}})</ion-label>
         </ion-segment-button>
       </ion-segment>
     </ion-col>
+    <ion-col size="2" style="padding: 17px 12px 0px 7px;">
+      <ion-icon style="font-size: 29px;color:green;" name="funnel" (click)="isShowFilter=!isShowFilter"></ion-icon>
+    </ion-col>
+   
+  </ion-row>
+  <ion-row *ngIf="isShowFilter">
     <ion-col>
       <ion-item class="main-item" mode="md">
         <ion-label position="floating">Project
@@ -59,15 +65,14 @@
         </ion-select>
       </ion-item>
     </ion-col>
-    <ion-col>
-      <ion-button (click)="getBasedOnStatus()"  style="background:#2d5697;--color:#fff; color: #fff!important;width:80px;border-radius: 10px;">
-        Filter
-      </ion-button>
+    <ion-col size="12" style="text-align: right;">
       <ion-button (click)="clearFilter()"  style="border:none;--color:#333;--background:#fff; color: #333!important;width:80px;border-radius: 10px;margin-left: 15px;">
         Clear 
       </ion-button>
+      <ion-button (click)="getBasedOnStatus()"  style="--background:green;--color:#fff; color: #fff!important;width:80px;border-radius: 10px;">
+        Filter
+      </ion-button>
     </ion-col>
-
   </ion-row>
 </div>
 
@@ -88,54 +93,60 @@
     <ion-item mode="md" [ngClass]="{'openClass': item.status === 'Open', 'inprogressClass' : item.status  === 'Inprogress', 'closeClass' : item.status  === 'Closed' }" class="openClass" (click)="item.isExpand=!item.isExpand" >
       <ion-icon style="margin-right: 7px;" *ngIf="!item.isExpand" name="caret-forward-outline" slot="start"></ion-icon>
       <ion-icon style="margin-right: 7px;" *ngIf="item.isExpand"   name="caret-down-outline" slot="start"></ion-icon>
-      <ion-title style="margin-right: 0px;padding-left:2px;" class="ellipsis" slot="start">{{item.name}}</ion-title>
-      <ion-text style="margin-left: 7px;" slot="end" class="assigneeName ellipsis">{{item.createdUser}}</ion-text>
-      <ion-button style="margin-left: 7px;" slot="end" (click)="viewObservation(item , $event)">View</ion-button>
+      <ion-title style="margin-right: 0px;padding-left:2px;" slot="start">{{item.name}}</ion-title>
+      <!-- <ion-text style="margin-left: 7px;" slot="end" class="assigneeName ellipsis">{{item.createdUser}}</ion-text> -->
+      <ion-button style="margin-left: 7px;--background:green" slot="end" (click)="viewObservation(item , $event)">View</ion-button>
     </ion-item>
  
     <ion-card-content style="padding: 0px;"  *ngIf="item.isExpand">
       <ion-row class="main-row">
         <ion-col size="6">
           <ion-row>
-            <ion-col class="fieldlabel" size="4">Created user</ion-col>
-            <ion-col size="1">:</ion-col>
-            <ion-col size="7" class="fieldvalue"> {{item.createdUser}}</ion-col>
+            <ion-col class="fieldlabel" size="12">Created user</ion-col>
+            <ion-col size="12" class="fieldvalue"> {{item.createdUser}}</ion-col>
           </ion-row>
         </ion-col>
         <ion-col size="6">
           <ion-row>
-            <ion-col class="fieldlabel" size="4">Category</ion-col>
-            <ion-col size="1">:</ion-col>
-            <ion-col size="7" class="fieldvalue"> {{item.category}}</ion-col>
+            <ion-col class="fieldlabel" size="12">Project name</ion-col>
+            <ion-col size="12" class="fieldvalue"> {{item.projectName}}</ion-col>
           </ion-row>
         </ion-col>
         <ion-col size="6">
           <ion-row>
-            <ion-col class="fieldlabel" size="4">Activity Type</ion-col>
-            <ion-col size="1">:</ion-col>
-            <ion-col size="7" class="fieldvalue"> {{item.typeOfActivity}}</ion-col>
+            <ion-col class="fieldlabel" size="12">Project location</ion-col>
+            <ion-col size="12" class="fieldvalue"> {{item.projectLocation}}</ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col size="6">
+          <ion-row>
+            <ion-col class="fieldlabel" size="12">Category</ion-col>
+            <ion-col size="12" class="fieldvalue"> {{item.category}}</ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col size="6">
+          <ion-row>
+            <ion-col class="fieldlabel" size="12">Activity Type</ion-col>
+            <ion-col size="12" class="fieldvalue"> {{item.typeOfActivity}}</ion-col>
           </ion-row>
         </ion-col>
         
         <ion-col size="6">
           <ion-row>
-            <ion-col class="fieldlabel" size="4">Action Owner</ion-col>
-            <ion-col size="1">:</ion-col>
-            <ion-col size="7" class="fieldvalue"> {{item.actionOwner}}</ion-col>
+            <ion-col class="fieldlabel" size="12">Action Owner</ion-col>
+            <ion-col size="12" class="fieldvalue"> {{item.actionOwner}}</ion-col>
           </ion-row>
         </ion-col>
         <ion-col size="6">
           <ion-row>
-            <ion-col class="fieldlabel" size="4">Due Date</ion-col>
-            <ion-col size="1">:</ion-col>
-            <ion-col size="7" class="fieldvalue"> {{item.dueDate | date}}</ion-col>
+            <ion-col class="fieldlabel" size="12">Due Date</ion-col>
+            <ion-col size="12" class="fieldvalue"> {{item.dueDate | date}}</ion-col>
           </ion-row>
         </ion-col>
         <ion-col size="6">
           <ion-row>
-            <ion-col class="fieldlabel" size="4">Status</ion-col>
-            <ion-col size="1">:</ion-col>
-            <ion-col size="7" class="fieldvalue"> {{item.status}}</ion-col>
+            <ion-col class="fieldlabel" size="12">Status</ion-col>
+            <ion-col size="12" class="fieldvalue"> {{item.status}}</ion-col>
           </ion-row>
         </ion-col>
       

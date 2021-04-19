@@ -12,7 +12,7 @@
   text-align: center;
 
   ion-input {
-    border: 1px solid #16438b;
+    border: 1px solid green;
     border-radius: 5px;
   }
 
@@ -37,10 +37,10 @@
 }
 
 .login-card ion-input ion-icon{
-  border-right: 1px solid #16438b;
+  border-right: 1px solid green;
     padding: 13px;
     font-size: 16px;
-    color:#16438b;
+    color:green;
 }
 
 .login-card ion-input:hover {

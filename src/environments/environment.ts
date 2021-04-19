@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseURL: 'https://localhost:44394/api/Observation/v1/',
+  baseURL:  'https://shock-api.herokuapp.com/api/Observation/v1/',
 };
 
 // export const links={

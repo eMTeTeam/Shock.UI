@@ -142,6 +142,10 @@ public pieChartOptions: ChartOptions = {
     this.observationStatus= ev.detail.value;
     this.resetChartData();
   }
+  resetChartDataRefresh(event){
+    this.resetChartData();
+    event.target.complete();
+  }
   resetChartData(){
 
     var userValidList=this.userService.observationList.filter((data)=>{
