@@ -24,7 +24,7 @@ export class Tab3Page {
   categoryList:Array<string>=Observers.category;
   activityTypeList:Array<string>=Observers.activityType;
   projectList:Array<string>= Observers.projectList;
-
+  isShowFilter:boolean=false;
 
 public pieChartOptions: ChartOptions = {
   responsive: true,

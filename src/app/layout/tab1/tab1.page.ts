@@ -82,6 +82,7 @@ export class Tab1Page implements OnInit {
   refreshObservationList(event){
     this.getAllObservations(event);
   }
+  isShowFilter:boolean=false;
   getAllObservations(event){
     this.loadingService.show();
     this.apiService.GetAllObservations(this.userService.User).subscribe(
