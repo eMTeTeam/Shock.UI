@@ -133,7 +133,7 @@ export class Tab1Page implements OnInit {
        (this.filterObject.category=='All'?true:data.category==this.filterObject.category)&&
        (this.filterObject.project=='All'?true:data.projectName==this.filterObject.project)&&
        (this.observationStatus=='All'?true:data.status==this.observationStatus)&&
-        (this.userService._user=='admin'?true:data.createdUser==this.userService._user);
+        (this.userService._user.toLowerCase()=='admin'?true:data.createdUser.toLowerCase()==this.userService._user.toLowerCase());
     });
     if(this.observationStatus=='All'){
       this.filteredObservationStatus = this.filteredObservationStatus.sort((a, b) => (a.status < b.status) ? 1 : -1)

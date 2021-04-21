@@ -199,7 +199,7 @@ public pieChartOptions: ChartOptions = {
       (this.filterObject.category=='All'?true:data.category==this.filterObject.category)&&
       (this.filterObject.project=='All'?true:data.projectName==this.filterObject.project)&&
       (this.observationStatus=='All'?true:data.status==this.observationStatus)&&
-       (this.userService._user=='admin'?true:data.createdUser==this.userService._user);
+       (this.userService._user.toLowerCase()=='admin'?true:data.createdUser.toLowerCase()==this.userService._user.toLowerCase());
    });
     this.pieChartData=[];
 

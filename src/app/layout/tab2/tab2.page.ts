@@ -137,7 +137,7 @@ export class Tab2Page {
       }
       else{
         isAdd=true;
-        this.userService.observationData.createdUser=this.userService._user;
+        this.userService.observationData.createdUser=this.userService._user.toLowerCase();
         this.userService.observationData.id="3fa85f64-5717-4562-b3fc-2c963f66afa6";
         this.loadingService.show();
         var observationData=this.userService.observationData;

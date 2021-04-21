@@ -42,7 +42,7 @@ export class LoginPage implements OnInit {
       const password: string =this.loginForm.value.password.toLowerCase();
       if (this.users.includes(user) && this.password === password) {
         this.loadingService.show();
-        this.userService.User = this.loginForm.value.userName;
+        this.userService.User = this.loginForm.value.userName.toLowerCase();
 
         if (user === 'test') {
           this.userService.IsSuperUser = true;
