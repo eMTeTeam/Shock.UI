@@ -7,7 +7,7 @@ import { LoadingService } from '../../services/loading.service';
 import { UserService, observation } from 'src/app/services/user.service';
 import { Observers } from 'src/app/entities/topglove.domain.model';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -38,7 +38,8 @@ export class Tab2Page {
     private loadingService: LoadingService,
     public userService: UserService,
     private fb: FormBuilder,
-    private route: ActivatedRoute,) {
+    private route: ActivatedRoute,
+    private alertController:AlertController) {
       this.observerData=this.userService.observationData;
       this.generateLoginForm();
       this.route.queryParams.subscribe(params => {
@@ -46,7 +47,49 @@ export class Tab2Page {
         this.observerForm.markAsTouched();
       });
   }
+  async presentAlertConfirm() {
+    if(this.userService.observationData.id){
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirm!',
+      message: 'Are you sure want to remove this observation <strong>'+ this.userService.observationData.name+'</strong>!!!',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Yes',
+          handler: () => {
+           this.removeObservation();
+          }
+        }
+      ]
+    });
 
+    await alert.present();
+  }
+  else{
+    this.toast.info("Please select valid observation");
+  }
+  }
+  removeObservation() {
+    this.loadingService.show();
+    this.apiService.removeObservation(this.userService.observationData.id).subscribe(
+      (data:any)=>{
+        this.loadingService.hide();
+         this.toast.success("Observation removed");
+         this.router.navigate(['/tabs/tab1']);
+      },
+      (err)=>{
+        this.loadingService.hide();
+        this.toast.error("Observation not removed, Please try again later");
+      }
+    );
+  }
   generateLoginForm = () => {
     this.observerForm = this.fb.group({
       observationName:['', Validators.required],

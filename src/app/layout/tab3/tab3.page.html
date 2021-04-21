@@ -1,23 +1,24 @@
 <div>
   <ion-row>
-    <ion-col size="10">
+    <ion-col size="11">
       <ion-segment (ionChange)="segmentChanged($event)" color="secondary" [value]="observationStatus" mode="ios" class="segmentFilter">
         <ion-segment-button value="All">
-          <ion-label>All</ion-label>
+          <ion-label>All ({{countObject.All}})</ion-label>
         </ion-segment-button>
         <ion-segment-button value="Open">
-          <ion-label>Open</ion-label>
+          <ion-label>Open ({{countObject.Open}})</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="Inprogress">
-          <ion-label>In progress</ion-label>
+        <ion-segment-button value="Inprogress" style="min-width: 115px;">
+          <ion-label>In progress ({{countObject.Inprogress}})</ion-label>
         </ion-segment-button>
         <ion-segment-button value="Closed">
-          <ion-label>Closed</ion-label>
+          <ion-label>Closed ({{countObject.Closed}})</ion-label>
         </ion-segment-button>
       </ion-segment>
     </ion-col>
-    <ion-col size="2" style="padding: 17px 12px 0px 7px;">
-      <ion-icon style="font-size: 29px;color:green;" name="funnel" (click)="isShowFilter=!isShowFilter"></ion-icon>
+    <ion-col size="1" style="padding: 17px 0px 0px 0px;" (click)="isShowFilter=!isShowFilter">
+      <ion-icon style="font-size: 29px;color:green;" name="funnel"></ion-icon>
+      <ion-badge *ngIf="isShowFilter" color="danger">X</ion-badge>
     </ion-col>
   </ion-row>
   <ion-row  *ngIf="isShowFilter">
@@ -79,9 +80,9 @@
     </ion-refresher-content>
   </ion-refresher>
   <div class="headerLabel">Category Analysis</div>
-  <ion-row class="main-row">
+  <ion-row class="main-row" *ngIf="pieChartLabels && pieChartData && pieChartData.length" >
    
-    <ion-col size="12" *ngIf="pieChartLabels && pieChartData"> 
+    <ion-col size="12"> 
       <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" 
       [chartType]="pieChartType"></canvas>
     </ion-col>

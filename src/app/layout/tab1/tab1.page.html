@@ -1,7 +1,7 @@
 <!-- <div class="observerHeader">Observations</div> -->
 <div>
   <ion-row>
-    <ion-col size="10">
+    <ion-col size="11">
       <ion-segment (ionChange)="segmentChanged($event)" color="secondary" [value]="observationStatus" mode="ios" class="segmentFilter">
         <ion-segment-button value="All">
           <ion-label>All ({{countObject.All}})</ion-label>
@@ -9,7 +9,7 @@
         <ion-segment-button value="Open">
           <ion-label>Open ({{countObject.Open}})</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="Inprogress">
+        <ion-segment-button value="Inprogress" style="min-width: 115px;">
           <ion-label>In progress ({{countObject.Inprogress}})</ion-label>
         </ion-segment-button>
         <ion-segment-button value="Closed">
@@ -17,8 +17,10 @@
         </ion-segment-button>
       </ion-segment>
     </ion-col>
-    <ion-col size="2" style="padding: 17px 12px 0px 7px;">
-      <ion-icon style="font-size: 29px;color:green;" name="funnel" (click)="isShowFilter=!isShowFilter"></ion-icon>
+    <ion-col size="1" style="padding: 17px 0px 0px 0px;" (click)="isShowFilter=!isShowFilter">
+      <ion-icon style="font-size: 29px;color:green;" name="funnel">
+      </ion-icon>
+      <ion-badge *ngIf="isShowFilter" color="danger">X</ion-badge>
     </ion-col>
    
   </ion-row>
@@ -70,7 +72,7 @@
         Clear 
       </ion-button>
       <ion-button (click)="getBasedOnStatus()"  style="--background:green;--color:#fff; color: #fff!important;width:80px;border-radius: 10px;">
-        Filter
+        Filter 
       </ion-button>
     </ion-col>
   </ion-row>
@@ -93,7 +95,7 @@
     <ion-item mode="md" [ngClass]="{'openClass': item.status === 'Open', 'inprogressClass' : item.status  === 'Inprogress', 'closeClass' : item.status  === 'Closed' }" class="openClass" (click)="item.isExpand=!item.isExpand" >
       <ion-icon style="margin-right: 7px;" *ngIf="!item.isExpand" name="caret-forward-outline" slot="start"></ion-icon>
       <ion-icon style="margin-right: 7px;" *ngIf="item.isExpand"   name="caret-down-outline" slot="start"></ion-icon>
-      <ion-title style="margin-right: 0px;padding-left:2px;" slot="start">{{item.name}}</ion-title>
+      <ion-title class="ellipsis" style="margin-right: 0px;padding-left:2px;min-width: calc(100% - 100px);" slot="start">{{item.name}}</ion-title>
       <!-- <ion-text style="margin-left: 7px;" slot="end" class="assigneeName ellipsis">{{item.createdUser}}</ion-text> -->
       <ion-button style="margin-left: 7px;--background:green" slot="end" (click)="viewObservation(item , $event)">View</ion-button>
     </ion-item>

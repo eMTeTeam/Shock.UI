@@ -59,10 +59,10 @@ export class Tab1Page implements OnInit {
     private apiService: ApiService,
     public userService: UserService,
     private route: ActivatedRoute,) {
-       this.getAllObservations("");
+       //this.getAllObservations("");
    
       this.route.queryParams.subscribe(params => {
-        this.setObservationList();
+        this.getAllObservations("");
        //this.getBasedOnStatus();
       // this.getAllObservations();
         // if (this.router.getCurrentNavigation().extras.state) {

@@ -18,7 +18,7 @@ export class ApiService {
     localStorage.removeItem("isSuperUser");
   }
   GetAllObservations = (user: string): Observable<any> => {
-    const base = environment.baseURL + 'GetAllObservations';
+    const base = environment.baseURL + 'GetAllObservationsForUser';
     const url = base + '?user=' + user;
     return this.http.get(url);
   }
@@ -29,6 +29,10 @@ export class ApiService {
   updateObservation = (params: any): Observable<any> => {
     const url = environment.baseURL + 'UpdateObservation';
     return this.http.post(url, params);
+  }
+  removeObservation = (id: any): Observable<any> => {
+    const url = environment.baseURL + 'DeleteObservation?id='+id;
+    return this.http.delete(url);
   }
   insertEntity = (params: any): Observable<any> => {
     const endpoint = 'AddQualityDetail';

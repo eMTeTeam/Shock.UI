@@ -8,7 +8,7 @@ import { UserService } from 'src/app/services/user.service';
 import {  Observers } from 'src/app/entities/topglove.domain.model';
 
 import { ChartType, ChartOptions, ChartDataSets } from 'chart.js';
-import { Color, Label, SingleDataSet } from 'ng2-charts';
+import { Label, SingleDataSet } from 'ng2-charts';
 
 @Component({
   selector: 'app-tab3',
@@ -97,6 +97,12 @@ public pieChartOptions: ChartOptions = {
       activity:"All",
       project:"All",
   }
+  countObject={
+    All:0,
+    Open:0,
+    Inprogress:0,
+    Closed:0
+  }
   minDate:string=new Date().toUTCString();
   maxDate:string=new Date().toUTCString();
   constructor(private router: Router,
@@ -121,11 +127,50 @@ public pieChartOptions: ChartOptions = {
     }
    // this.loadData();
    this.route.queryParams.subscribe(params => {
-     this.resetChartData();
-    
+    this.getAllObservations("");
+    //this.setObservationList();
   });
   }
 
+  getAllObservations(event){
+    this.loadingService.show();
+    this.apiService.GetAllObservations(this.userService.User).subscribe(
+      (data: any) => {
+        this.loadingService.hide();
+        this.userService.observationList=data;
+        this.countObject.All=data.length;
+        this.countObject.Open=data.filter(a=>a.status=="Open").length;
+        this.countObject.Inprogress=data.filter(a=>a.status=="Inprogress").length;
+        this.countObject.Closed=data.filter(a=>a.status=="Closed").length;
+        this.setObservationList();
+        if(event){
+          event.target.complete();
+        }
+      },
+      (err) => {
+        this.loadingService.hide();
+        if(event){
+          event.target.complete();
+        }
+      }
+    );
+  }
+  setObservationList(){
+    if(this.userService.observationList && this.userService.observationList.length){
+      var minDate = this.userService.observationList.reduce(function (a, b) { return (new Date(a.dueDate)) < (new Date(b.dueDate)) ? a : b; });
+      var maxDate = this.userService.observationList.reduce(function (a, b) { return (new Date(a.dueDate)) > (new Date(b.dueDate)) ? a : b; });
+     
+      if(minDate && minDate.dueDate){
+        this.filterObject.fromDate=minDate.dueDate;
+        this.minDate=minDate.dueDate;
+      }
+      if(maxDate && maxDate.dueDate){
+       this.filterObject.toDate=maxDate.dueDate;
+       this.maxDate=maxDate.dueDate;
+     }
+     this.resetChartData();
+   }
+  }
   clearFilter(){
     this.filterObject.fromDate=this.minDate;
     this.filterObject.toDate=this.maxDate;
@@ -138,13 +183,12 @@ public pieChartOptions: ChartOptions = {
   statusbarChartLabels:any=["Status"];
 
   segmentChanged(ev: any) {
-    console.log('Segment changed', ev);
+    //console.log('Segment changed', ev);
     this.observationStatus= ev.detail.value;
     this.resetChartData();
   }
   resetChartDataRefresh(event){
-    this.resetChartData();
-    event.target.complete();
+    this.getAllObservations(event);
   }
   resetChartData(){
 

@@ -26,9 +26,10 @@ export class Tab4Page implements OnInit {
   }
 
   checkForUpdate = () => {
-    if (environment.production) {
-      this.appUpdatorService.checkIfUpdateExist();
-    }
+    // if (environment.production) {
+    //   this.appUpdatorService.checkIfUpdateExist();
+    // }
+    this.router.navigate(['/tabs/tab1']);
   }
 
   logout = () => {

@@ -70,3 +70,10 @@ ion-segment .segment-button-checked{
 .closeClass{
   --background:#c9f4c9;
 }
+ion-badge{
+  position: absolute;
+    top: 8px;
+    right: 2px;
+    opacity: 0.9;
+    border-radius: 50%;
+}

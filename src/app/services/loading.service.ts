@@ -9,22 +9,40 @@ export class LoadingService {
     loading: HTMLIonLoadingElement;
     interval: any;
 
-    constructor(public loadingController: LoadingController) { }
+    constructor(public loadingController: LoadingController) {
 
-    show = async () => {
-        this.loading = await this.loadingController.create();
+     }
 
-        await this.loading.present();
+    show =  () => {
+        this.loadingController.create({
+            message: ''
+          }).then((res) => {
+            res.present();
+          });
     }
 
-    hide = () => {
 
-        setInterval(() => {
-            this.dismiss();
+    hide= ()=>{
+        setTimeout(() => {
+            this.loadingController.dismiss().then((res) => {
+                // console.log('Loading dismissed!', res);
+               }).catch((error) => {
+                 console.log('error', error);
+                 //this.hide();
+                 this.loadingController.dismiss()
+               });
         }, 1000);
-
-        this.dismiss();
+       
     }
+
+    // hide = () => {
+
+    //     setInterval(() => {
+    //         this.dismiss();
+    //     }, 1000);
+
+    //     this.dismiss();
+    // }
 
     private dismiss = () => {
         if (this.loading) {

@@ -100,12 +100,14 @@
               <ion-button style="background:#fff; color: #333;width:80px; border:1px solid green" routerLink="/tabs/tab1" >
                 Cancel
               </ion-button>
+              <ion-button  style="background:red;--color:#fff; color: rgb(133, 25, 25)!important;width:80px" (click)="presentAlertConfirm()">
+                Remove
+              </ion-button>
               <ion-button  type="submit" style="background:green;--color:#fff; color: #fff!important;width:80px">
                 Save
               </ion-button>
             </ion-buttons>
           </ion-toolbar>
-        <!-- <ion-button expand="block" type="submit" class="ion-no-margin btn-fill">Save</ion-button> -->
     </div>
 
     </form>
