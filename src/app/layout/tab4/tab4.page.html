@@ -2,6 +2,15 @@
 
   <ion-list lines="none">
 
+    <ion-item >
+      <ion-icon name="person-circle" slot="start"></ion-icon>
+      <ion-label>
+        <h3>{{userService._user}}</h3>
+        <p *ngIf="userService._user == 'admin'">I'm admin level user</p>
+        <p *ngIf="userService._user != 'admin'">I'm an observer</p>
+      </ion-label>
+    </ion-item>
+
     <ion-item (tap)="checkForUpdate()">
       <ion-icon name="paper-plane" slot="start"></ion-icon>
       <ion-label>

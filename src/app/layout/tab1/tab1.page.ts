@@ -122,7 +122,7 @@ export class Tab1Page implements OnInit {
      this.getBasedOnStatus();
    }
   }
-  observationStatus:string="Inprogress";
+  observationStatus:string="Open";
   filteredObservationStatus:any=[];
 
   getBasedOnStatus(){
