@@ -62,21 +62,11 @@ export class Tab1Page implements OnInit {
        //this.getAllObservations("");
    
       this.route.queryParams.subscribe(params => {
+        if(localStorage.getItem("isClearCache")=="true"){
+          this.observationStatus="Open";
+          localStorage.setItem("isClearCache",'false');
+        }
         this.getAllObservations("");
-       //this.getBasedOnStatus();
-      // this.getAllObservations();
-        // if (this.router.getCurrentNavigation().extras.state) {
-        //  console.log(this.router.getCurrentNavigation().extras.state.user);
-        //  this.observationStatus=this.userService.observationData.Status;
-        //      this.getBasedOnStatus();
-        //      setTimeout(() => {
-        //        if(this.router.getCurrentNavigation().extras.state.user)
-        //     this.content.scrollToBottom();
-        //      }, 1000);
-        // }
-        // else{
-        //   this.getBasedOnStatus();
-        // }
       });
   }
   refreshObservationList(event){

@@ -5,7 +5,7 @@ import { ApiService } from '../../services/api.service';
 import { NotificationService } from '../../services/notification.service';
 import { LoadingService } from '../../services/loading.service';
 import { UserService, observation } from 'src/app/services/user.service';
-import { Observers } from 'src/app/entities/topglove.domain.model';
+import { Observers, Users } from 'src/app/entities/topglove.domain.model';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 
@@ -18,6 +18,7 @@ export class Tab2Page {
 
   observerForm: FormGroup;
   categoryList:Array<string>=Observers.category.filter(a=>a!="All");
+  assigneeList:Array<string>=Users.data;
   activityTypeList:Array<string>=Observers.activityType.filter(a=>a!="All");;
   observerStatusList:Array<string>=Observers.status;
   projectList:Array<string> = Observers.projectList.filter(a=>a!="All");;;
@@ -41,6 +42,7 @@ export class Tab2Page {
     private route: ActivatedRoute,
     private alertController:AlertController) {
       this.observerData=this.userService.observationData;
+      this.userService.observationData.createdUser=this.userService._user.toLowerCase();
       this.generateLoginForm();
       this.route.queryParams.subscribe(params => {
         this.observerForm.markAsPristine();
@@ -102,6 +104,7 @@ export class Tab2Page {
       status: ['', Validators.required],
       projectName:['',Validators.required],
       projectLocation:['',Validators.required],
+      createdUser:['',Validators.required],
     });
   }
   addObservation() {
@@ -137,7 +140,7 @@ export class Tab2Page {
       }
       else{
         isAdd=true;
-        this.userService.observationData.createdUser=this.userService._user.toLowerCase();
+   
         this.userService.observationData.id="3fa85f64-5717-4562-b3fc-2c963f66afa6";
         this.loadingService.show();
         var observationData=this.userService.observationData;

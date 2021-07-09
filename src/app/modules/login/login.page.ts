@@ -24,6 +24,7 @@ export class LoginPage implements OnInit {
     private userService: UserService,
     private toast: NotificationService, private apiService:ApiService) {
     this.generateLoginForm();
+    localStorage.setItem("isClearCache",'true');
   }
 
   ngOnInit() {
@@ -38,6 +39,7 @@ export class LoginPage implements OnInit {
 
   doLogin = () => {
     if (this.loginForm.dirty && this.loginForm.valid) {
+      localStorage.setItem("isClearCache",'true');
       const user: string = this.loginForm.value.userName.toLowerCase();
       const password: string =this.loginForm.value.password.toLowerCase();
       if (this.users.includes(user) && this.password === password) {
