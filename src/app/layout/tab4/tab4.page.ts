@@ -17,7 +17,7 @@ export class Tab4Page implements OnInit {
     private apiService: ApiService,
     private authCookie: AuthCookie,
     private appUpdatorService: AppUpdatorService,
-    private userService: UserService) { }
+    public userService: UserService) { }
 
   ngOnInit() {
   }
