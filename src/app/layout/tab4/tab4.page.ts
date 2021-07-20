@@ -5,6 +5,7 @@ import { AuthCookie } from '../../services/auth-cookie-handler';
 import { AppUpdatorService } from '../../services/app-updator.service';
 import { environment } from '../../../environments/environment';
 import { UserService } from 'src/app/services/user.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-tab4',
@@ -17,7 +18,8 @@ export class Tab4Page implements OnInit {
     private apiService: ApiService,
     private authCookie: AuthCookie,
     private appUpdatorService: AppUpdatorService,
-    public userService: UserService) { }
+    public userService: UserService,
+    public toast:NotificationService) { }
 
   ngOnInit() {
   }
@@ -36,4 +38,9 @@ export class Tab4Page implements OnInit {
     this.apiService.logout();
     this.router.navigate(['./login']);
   }
+
+  navigateToUsers = () =>{
+    this.toast.error("This page is under construction!");
+  }
+
 }

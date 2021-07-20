@@ -45,7 +45,7 @@
 
         <ion-col>
           <ion-item class="main-item">
-            <ion-label position="floating">Type of activity<ion-text color="danger">*</ion-text>
+            <ion-label position="floating">Type of Activity<ion-text color="danger">*</ion-text>
             </ion-label>
             <ion-select  mode="ios" formControlName="activity"  placeholder="Select activity" [(ngModel)]="userService.observationData.typeOfActivity">
               <ion-select-option [value]="s" *ngFor="let s of activityTypeList">{{s}}</ion-select-option>
@@ -63,14 +63,14 @@
         
         <ion-col  size="12">
             <ion-item class="main-item">
-              <ion-label position="floating">Agreed action<ion-text color="danger">*</ion-text>
+              <ion-label position="floating">Agreed Action<ion-text color="danger">*</ion-text>
               </ion-label>
               <ion-textarea formControlName="agreedAction" placeholder="Add Agreed action" [(ngModel)]="userService.observationData.agreedAction"></ion-textarea>
             </ion-item>
           </ion-col>
           <ion-col>
             <ion-item class="main-item">
-              <ion-label position="floating">Action owner<ion-text color="danger">*</ion-text>
+              <ion-label position="floating">Action Owner<ion-text color="danger">*</ion-text>
               </ion-label>
               <ion-input formControlName="actionOwner" placeholder="Add Action owner" [(ngModel)]="userService.observationData.actionOwner"></ion-input>
             </ion-item>
@@ -78,7 +78,7 @@
 
           <ion-col>
             <ion-item class="main-item">
-              <ion-label position="floating">Due date<ion-text color="danger">*</ion-text>
+              <ion-label position="floating">Due Date<ion-text color="danger">*</ion-text>
               </ion-label>
               <ion-datetime mode="ios" formControlName="dueDate" displayFormat="MMM DD YYYY" placeholder="Select due date" [(ngModel)]="userService.observationData.dueDate"></ion-datetime>
             </ion-item>

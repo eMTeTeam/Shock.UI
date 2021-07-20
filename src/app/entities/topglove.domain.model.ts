@@ -31,10 +31,10 @@ export class Defetcs {
 
 export class Observers{
     static category: Array<string>= ['All','Unsafe Act', 'Unsafe Condition', 'Positve Observation',
-     'At risk behavior', 'Others'];
+     'At Risk Behavior', 'Others'];
     static activityType: Array<string> = ['All',
         'PPE/Safety helmet', 'PPE/Safely glass', 'PPE/Respiratory protection',
-        'PPE/Coverall', 'PPE/Safety shoe', 'PPE/Ear plug', 'PPE/Fullbody harness', 
+        'PPE/Coverall', 'PPE/Safety Shoe', 'PPE/Ear Plug', 'PPE/Fullbody Harness', 
         'PPE/Gloves', 'Housekeeping', 'Working at Height',
         'Scaffolding', 'Work Permit', 'HIRA/JSA',
          'Access and agrees', 'Electrical Hazard ', 'Lifting & Rigging' , 
@@ -44,7 +44,7 @@ export class Observers{
         'Fire Hazard ', 'Safety Signs', 'Compressed gas cylinders', 'Painting',
         'Coating', 'Others'];
     static status:Array<string> =['Open','Inprogress','Closed']
-    static projectList=["All","College","School","IT park", "Mall","Theater"];
+    static projectList=["All","College","School","IT Park", "Mall","Theater"];
     static observationInitialList:any=[];
     // =[
     //     {assignee:'admin',category:'Unsafe Act', activity:'PPE/Safety helmet', status:'Open', observerId:"Observation 1", dueDate:new Date().toISOString()},

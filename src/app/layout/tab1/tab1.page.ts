@@ -148,4 +148,7 @@ export class Tab1Page implements OnInit {
     this.observationStatus= ev.detail.value;
     this.getBasedOnStatus();
   }
+  downloadData(){
+    this.toast.info("This feature is under construction!");
+  }
 }

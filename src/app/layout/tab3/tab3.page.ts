@@ -190,6 +190,11 @@ public pieChartOptions: ChartOptions = {
   resetChartDataRefresh(event){
     this.getAllObservations(event);
   }
+
+  downloadData(){
+    this.toast.info("This feature is under construction!");
+  }
+
   resetChartData(){
 
     var userValidList=this.userService.observationList.filter((data)=>{
@@ -238,6 +243,7 @@ this.barChartData = Object.keys(counts).map(k => {
     return {label: k, data: [statuscounts[k]]}; });
 
   }
+
   
 
 }
